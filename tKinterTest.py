@@ -1,7 +1,11 @@
 from tkinter import *
+import random 
 
 top = Tk()
 playList = []
+myRolls = []
+rollTimes = 0
+dieType = 0
 
 def results():
     print(playList)
@@ -58,6 +62,26 @@ def week1():
     Bclear.grid(column = 3, row = 1)
 
 def week2():
+    def rollDice():
+        #update variable data
+        dieType = E1W2.get()
+        rollTimes = E2W2.get()
+        #clear window after pulling entry data
+        clearWindow()
+        #calculate dice rolls
+        for x in range(0, int(rollTimes)):
+            myRolls.append(random.randint(1, int(dieType)))
+
+        #diplay dice rolls and present an exit button
+        L4W2 = Label(top, text = "Your Rolls")
+        L4W2.grid(column = 0, row = 1)
+        
+        L5W2 = Label(top, text = "{}".format(myRolls))
+        L5W2.grid(column = 0, row = 2)
+        
+        B2W2 = Button(text = "main menu", bg = "yellow", command = mainMenu)
+        B2W2.grid(column = 0, row = 3)
+    
     clearWindow()
     
     L1W2 = Label(top, text = "Dice Rollaer Program")
@@ -75,7 +99,7 @@ def week2():
     E2W2 = Entry(top, bd = 5)
     E2W2.grid(column = 2, row = 3)
     
-    B1W2 = Button(text = "roll", bg = "yellow")
+    B1W2 = Button(text = "roll", bg = "yellow", command = rollDice)
     B1W2.grid(column = 2, row = 4)
 #to add: roll funciton and exit button
 
