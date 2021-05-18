@@ -73,14 +73,15 @@ def week2():
             myRolls.append(random.randint(1, int(dieType)))
 
         #diplay dice rolls and present an exit button
-        L4W2 = Label(top, text = "Your Rolls")
-        L4W2.grid(column = 0, row = 1)
+        top.geometry('250x200+250+200')
+        L4W2 = Label(top, text = "Your Rolls:")
+        L4W2.place(x=5, y=0)
         
         L5W2 = Label(top, text = "{}".format(myRolls))
-        L5W2.grid(column = 0, row = 2)
+        L5W2.place(x=30, y=15)
         
         B2W2 = Button(text = "main menu", bg = "yellow", command = mainMenu)
-        B2W2.grid(column = 0, row = 3)
+        B2W2.place(x=5, y=45)
     
     clearWindow()
     
