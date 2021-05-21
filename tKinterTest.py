@@ -105,7 +105,115 @@ def week2():
 #to add: roll funciton and exit button
 
 def week3():
-    print("we're not here yet")
+    def searchDie():
+
+        clearWindow()
+
+        L1D = Label(top, text = "what number are you looking for?")
+        L1D.grid(column = 0, row = 0)
+
+        E1D = Entry(top, bd = 5)
+        E1D.grid(column = 0, row = 1)
+
+        B1D = Button(text = "search", bg = "green", command = pain)
+        B1D.grid(column = 1, row = 1)
+        
+        E1D.delete(0, END)
+        numLook = E1D.get()
+        """ okay here's the thing I know what's wrong and how to fix it ieally,
+I just don't have any idea how to fix it in practice.
+Basically, because "numLook" isn't universally defined and it is defed in a funcition
+that it is called in, basically no workie. I have numLook defed in a different function
+becuse that function is were you get the entry data required, but becuse it is there and
+not under pain when I call the variable the pain function breaks becuse it doesn't have a
+value, IDk how to fix this. :(
+"""
+
+    def pain():
+        result = binDie(myRolls, int(numLook))
+                
+        if result != -1:
+            L2D = Label(top, text = "your number is at index postition {}".format(result))
+
+        else:
+            L3D = Label(top, text = "the number you are looking for is not here")
+
+            
+    def binDie(myRolls, x):
+        low = 0
+        high = len(myRolls)-1
+        mid = 0
+
+        while low <= high:
+            mid = (high + low) // 2
+
+            if myRolls[mid] < x:
+                low = mid + 1
+            elif myRolls[mid] > x:
+                high = mid - 1
+            else:
+                return mid
+        return -1
+        
+    def searchPlay():
+        clearWindow()
+
+        L1P = Label(top, text = "what number are you looking for?")
+        L1P.grid(column = 0, row = 0)
+
+        E1P = Entry(top, bd = 5)
+        E1P.grid(column = 0, row = 1)
+
+        B1P = Button(text = "search", bg = "green", command = pain2)
+        B1P.grid(column = 1, row = 1)
+        
+        E1P.delete(0, END)
+        numLook2 = E1P.get()
+    def pain2():
+        result = binPlay(playList, int(numLook2))
+                
+        if result != -1:
+            L2P = Label(top, text = "your song is at index position {}".format(result))
+
+        else:
+            L3P = Label(top, text = "the song you are looking for is not here")
+
+    def binPlay (playList, x):
+        low = 0
+        high = len(playList)-1
+        mid = 0
+
+        while low <= high:
+            mid = (high + low) // 2
+
+            if playList[mid] < x:
+                low = mid + 1
+            elif playList[mid] > x:
+                high = mid - 1
+            else:
+                return mid
+        return -1
+        
+    clearWindow()
+
+    L2W3 = Label(top, text = "before you can run this function please make sure you have ran the first two.")
+    L2W3.grid(column = 0, row = 0)
+        
+    L1W3 = Label(top, text = "Searching for things...")
+    L1W3.grid(column = 0, row = 1)
+
+    L2W3 = Label(top, text = "Which list would you like to search?")
+    L2W3.grid(column = 0, row = 2)
+
+    B1W3 = Button(text = "Playlist", bg = "green", command = searchPlay)
+    B1W3.grid(column = 0, row = 3)
+
+    B2W3 = Button(text = "Die rolls", bg = "orange", command = searchDie)
+    B2W3.grid(column = 1, row = 3)
+
+    B3W3 = Button(text = "Main Menu", bg = "yellow", command = mainMenu)
+    B3W3.grid(column = 1, row = 0)
+            
 
 if __name__ == "__main__":
     mainMenu()
